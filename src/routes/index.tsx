@@ -2,9 +2,16 @@ import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import FeatherIcon from "react-native-vector-icons/Feather"; // Importe o ícone Feather
+
 import Home from "../screens/Home";
+import HomeIcon from "../components/Icons/Home";
+
 import Catalog from "../screens/Catalog";
+import CatalogIcon from "../components/Icons/Catalog";
+
 import Cart from "../screens/Cart";
+import CartIcon from "../components/Icons/Cart";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +28,7 @@ export function TabRoutes() {
             tabBarActiveTintColor: "#418B64",
             tabBarInactiveTintColor: "#000",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="home" size={size} color={color} />
+              <HomeIcon color={color} size={size} />
             ),
           }}
         />
@@ -34,7 +41,7 @@ export function TabRoutes() {
             tabBarInactiveTintColor: "#000",
             tabBarLabel: "Catalog",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="list" size={size} color={color} />
+              <CatalogIcon color={color} size={size} />
             ),
           }}
         />
@@ -47,7 +54,7 @@ export function TabRoutes() {
             tabBarInactiveTintColor: "#000",
             tabBarLabel: "Cart",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="shopping-cart" size={size} color={color} />
+              <CartIcon color={color} size={size} />
             ),
           }}
         />
