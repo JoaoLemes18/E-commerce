@@ -11,14 +11,14 @@ export default function App() {
       </View>
       <View style={styles.buttonContainer}>
         <View style={styles.buttonColumn}>
-          <ButtonHome title="Teclados" />
-          <ButtonHome title="Fones" />
-          <ButtonHome title="Monitores" />
+          <ButtonHome title="Teclados" iconName="" />
+          <ButtonHome title="Fones" iconName="" />
+          <ButtonHome title="Monitores" iconName="" />
         </View>
         <View style={styles.buttonColumn}>
-          <ButtonHome title="Mouses" />
-          <ButtonHome title="Mousespads" />
-          <ButtonHome title="Speakers" />
+          <ButtonHome title="Mouses" iconName="" />
+          <ButtonHome title="Mousespads" iconName="" />
+          <ButtonHome title="Speakers" iconName="" />
         </View>
       </View>
     </View>
