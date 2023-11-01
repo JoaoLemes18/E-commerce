@@ -1,11 +1,11 @@
 import React from "react";
-import { StatusBar } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import { TabRoutes } from "./src/routes/";
 
 export default function App() {
   return (
     <>
-      <StatusBar />
+      <StatusBar style="auto" />
       <TabRoutes />
     </>
   );
