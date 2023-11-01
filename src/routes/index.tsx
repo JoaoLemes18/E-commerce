@@ -1,8 +1,6 @@
 import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import Icon from "react-native-vector-icons/FontAwesome";
-import FeatherIcon from "react-native-vector-icons/Feather"; // Importe o ícone Feather
 
 import Home from "../screens/Home";
 import HomeIcon from "../components/Icons/Home";
