@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import { colors } from "../../colors";
-
+import Header from "../../components/Header";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Header />
     </View>
   );
 }
@@ -12,7 +12,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.backgroundColor,
+    backgroundColor: colors.primaryColor,
     alignItems: "center",
     justifyContent: "center",
   },

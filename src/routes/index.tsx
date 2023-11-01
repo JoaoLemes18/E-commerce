@@ -10,21 +10,31 @@ import CatalogIcon from "../components/Icons/Catalog";
 
 import Cart from "../screens/Cart";
 import CartIcon from "../components/Icons/Cart";
+import { colors } from "../colors";
 
 const Tab = createBottomTabNavigator();
 
 export function TabRoutes() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarActiveTintColor: "white",
+          tabBarInactiveTintColor: "white",
+
+          tabBarStyle: {
+            borderTopWidth: 0,
+            backgroundColor: colors.primaryColor,
+          },
+        }}
+      >
         <Tab.Screen
           name="Home"
           component={Home}
           options={{
             tabBarLabel: "Home",
             headerShown: false,
-            tabBarActiveTintColor: "#418B64",
-            tabBarInactiveTintColor: "#000",
+
             tabBarIcon: ({ color, size }) => (
               <HomeIcon color={color} size={size} />
             ),
@@ -35,8 +45,6 @@ export function TabRoutes() {
           component={Catalog}
           options={{
             headerShown: false,
-            tabBarActiveTintColor: "#418B64",
-            tabBarInactiveTintColor: "#000",
             tabBarLabel: "Catalog",
             tabBarIcon: ({ color, size }) => (
               <CatalogIcon color={color} size={size} />
@@ -48,8 +56,6 @@ export function TabRoutes() {
           component={Cart}
           options={{
             headerShown: false,
-            tabBarActiveTintColor: "#418B64",
-            tabBarInactiveTintColor: "#000",
             tabBarLabel: "Cart",
             tabBarIcon: ({ color, size }) => (
               <CartIcon color={color} size={size} />
@@ -60,3 +66,4 @@ export function TabRoutes() {
     </NavigationContainer>
   );
 }
+export default TabRoutes;
