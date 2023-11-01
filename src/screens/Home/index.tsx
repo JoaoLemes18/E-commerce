@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { colors } from "../../colors";
-import Header from "../../components/Header";
+import Banner from "../../../assets/banner-55%off.png";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Header />
+      <View style={styles.ImageContainer}>
+        <Image source={Banner} style={{ width: 350, height: 150 }} />
+      </View>
     </View>
   );
 }
@@ -15,5 +17,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primaryColor,
     alignItems: "center",
     justifyContent: "center",
+  },
+  ImageContainer: {
+    marginBottom: 200,
   },
 });
