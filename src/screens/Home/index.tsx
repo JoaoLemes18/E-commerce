@@ -1,13 +1,24 @@
-import { StyleSheet, View, Image } from "react-native";
+import React from "react";
+import {
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { colors } from "../../colors";
 import ButtonHome from "../../components/Button/ButtonsHome";
 import Banner from "../../../assets/banner-55%off.png";
+import Header from "../../components/Header";
 
-export default function App() {
+export default function Home() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      <Header />
       <View style={styles.ImageContainer}>
-        <Image source={Banner} style={{ width: 350, height: 150 }} />
+        <TouchableOpacity>
+          <Image source={Banner} style={{ width: 350, height: 150 }} />
+        </TouchableOpacity>
       </View>
       <View style={styles.buttonContainer}>
         <View style={styles.buttonColumn}>
@@ -21,7 +32,7 @@ export default function App() {
           <ButtonHome title="Speakers" iconName="" />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -29,11 +40,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.primaryColor,
-    alignItems: "center",
-    justifyContent: "center",
   },
   ImageContainer: {
-    marginBottom: 75,
+    margin: 19,
+    marginBottom: 65,
   },
   buttonContainer: {
     flexDirection: "row",
