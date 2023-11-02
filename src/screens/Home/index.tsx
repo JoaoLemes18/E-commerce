@@ -10,6 +10,7 @@ import { colors } from "../../colors";
 import ButtonHome from "../../components/Button/ButtonsHome";
 import Banner from "../../../assets/banner-55%off.png";
 import Header from "../../components/Header";
+import TextHome from "../../components/Text";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
           <ButtonHome title="Mousespads" iconName="" />
           <ButtonHome title="Speakers" iconName="" />
         </View>
+        <TextHome text="Ofertas" />
       </View>
     </ScrollView>
   );
