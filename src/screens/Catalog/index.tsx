@@ -26,5 +26,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primaryColor,
   },
   componetenttext: { marginRight: 200 },
-  componetentcard: {},
+  componetentcard: { marginLeft: 30, marginTop: 25 },
 });
