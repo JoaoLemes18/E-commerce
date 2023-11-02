@@ -32,8 +32,8 @@ export default function Home() {
           <ButtonHome title="Mousespads" iconName="" />
           <ButtonHome title="Speakers" iconName="" />
         </View>
-        <TextHome text="Ofertas" />
       </View>
+      <TextHome text="Ofertas" style={styles.textHome} />
     </ScrollView>
   );
 }
@@ -54,5 +54,12 @@ const styles = StyleSheet.create({
   buttonColumn: {
     flex: 1,
     alignItems: "center",
+  },
+  textHome: {
+    marginTop: 20,
+    fontSize: 20,
+    fontWeight: "bold",
+    color: colors.whiteColor,
+    marginLeft: 20,
   },
 });
