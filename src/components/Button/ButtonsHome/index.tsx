@@ -1,9 +1,7 @@
 import React from "react";
-import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { SimpleLineIcons } from "@expo/vector-icons";
-
-import { colors } from "../../../colors";
+import { styles } from "./styles";
 
 interface ButtonHomeProps {
   title: string;
@@ -28,30 +26,5 @@ const ButtonHome: React.FC<ButtonHomeProps> = ({
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    borderColor: colors.secondaryColor,
-    borderWidth: 2,
-    borderRadius: 10,
-    padding: 16,
-    backgroundColor: "transparent",
-    width: 168,
-  },
-  title: {
-    fontWeight: "700",
-    fontSize: 12,
-    color: colors.whiteColor,
-  },
-  buttonMargin: {
-    marginBottom: 10,
-  },
-  icon: {
-    fontSize: 18,
-    color: colors.whiteColor,
-    marginRight: 8,
-  },
-});
 
 export default ButtonHome;

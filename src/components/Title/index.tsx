@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   titleBox: {
     flexDirection: "row",
-    borderColor: "#8162FF",
+    borderColor: colors.accentColor,
     borderWidth: 2,
     borderRadius: 130,
     padding: 16,
