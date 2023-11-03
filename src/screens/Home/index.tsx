@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -14,44 +14,25 @@ import Banner2 from "../../assets/banner-mouses.png";
 import Banner3 from "../../assets/Banner-Fones.png";
 import Header from "../../components/Header";
 import TextHome from "../../components/Text";
-import Card from "../../components/Cards/ProductsCard"; // Certifique-se de importar o componente Card a partir do caminho correto
-import api from "../../services/api";
-
-const data = [
-  {
-    id: "1",
-    productName: "G Pro X Superlight",
-    price: 49.99,
-    discountedPrice: 39.99,
-    rating: 4.5,
-    imageSource: require("../../assets/imageFone.png"),
-  },
-  {
-    id: "2",
-    productName: "Cloud Stinger 2",
-    price: 29.99,
-    rating: 4.0,
-    imageSource: require("../../assets/imageMouse.png"),
-  },
-  {
-    id: "3",
-    productName: "G Pro X Superlight",
-    price: 49.99,
-    discountedPrice: 39.99,
-    rating: 4.5,
-    imageSource: require("../../assets/imageFone.png"),
-  },
-  {
-    id: "4",
-    productName: "G Pro X Superlight",
-    price: 49.99,
-    discountedPrice: 39.99,
-    rating: 4.5,
-    imageSource: require("../../assets/imageFone.png"),
-  },
-];
+import Card from "../../components/Cards/ProductsCard";
+import { fetchProductData } from "../../services/api";
 
 export default function Home() {
+  const [data, setData] = useState<Products[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const products = await fetchProductData();
+        setData(products);
+      } catch (error) {
+        console.error("Erro ao buscar os dados da API:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <ScrollView style={styles.container}>
@@ -77,14 +58,14 @@ export default function Home() {
         <FlatList
           data={data}
           horizontal={true}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <Card
-              productName={item.productName}
+              productName={item.name}
               price={item.price}
-              discountedPrice={item.discountedPrice}
-              rating={item.rating}
-              imageSource={item.imageSource}
+              discountedPrice={item.price - item.discount}
+              rating={item.average_rating}
+              imageSource={item.imageUrls[0]}
             />
           )}
         />
@@ -96,20 +77,7 @@ export default function Home() {
         <View style={styles.keyboard}>
           <TextHome text="TECLADOS" style={styles.textHome} />
         </View>
-        <FlatList
-          data={data}
-          horizontal={true}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <Card
-              productName={item.productName}
-              price={item.price}
-              discountedPrice={item.discountedPrice}
-              rating={item.rating}
-              imageSource={item.imageSource}
-            />
-          )}
-        />
+
         <View style={styles.ImageContainer3}>
           <TouchableOpacity>
             <Image source={Banner3} style={{ width: 350, height: 150 }} />
@@ -118,20 +86,6 @@ export default function Home() {
         <View style={styles.keyboard}>
           <TextHome text="MOUSES" style={styles.textHome} />
         </View>
-        <FlatList
-          data={data}
-          horizontal={true}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <Card
-              productName={item.productName}
-              price={item.price}
-              discountedPrice={item.discountedPrice}
-              rating={item.rating}
-              imageSource={item.imageSource}
-            />
-          )}
-        />
       </ScrollView>
     </>
   );

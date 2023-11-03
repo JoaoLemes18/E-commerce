@@ -9,7 +9,7 @@ interface CardProps {
   discountedPrice?: number;
   discountedPriceP?: boolean;
   rating: number;
-  imageSource: any;
+  imageSource: string[];
 }
 
 const Card: React.FC<CardProps> = ({
