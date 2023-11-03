@@ -11,6 +11,7 @@ import { colors } from "../../colors";
 import ButtonHome from "../../components/Button/ButtonsHome";
 import Banner from "../../assets/banner-55%off.png";
 import Banner2 from "../../assets/banner-mouses.png";
+import Banner3 from "../../assets/Banner-Fones.png";
 import Header from "../../components/Header";
 import TextHome from "../../components/Text";
 import Card from "../../components/Cards/ProductsCard"; // Certifique-se de importar o componente Card a partir do caminho correto
@@ -108,6 +109,11 @@ export default function Home() {
             />
           )}
         />
+        <View style={styles.ImageContainer3}>
+          <TouchableOpacity>
+            <Image source={Banner3} style={{ width: 350, height: 150 }} />
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </>
   );
@@ -124,6 +130,10 @@ const styles = StyleSheet.create({
     left: 10,
   },
   ImageContainer2: {
+    margin: 19,
+    left: 10,
+  },
+  ImageContainer3: {
     margin: 19,
     left: 10,
   },
