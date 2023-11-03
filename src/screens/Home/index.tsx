@@ -17,7 +17,7 @@ import Card from "../../components/Cards/ProductsCard"; // Certifique-se de impo
 const data = [
   {
     id: "1",
-    productName: "Produto 1",
+    productName: "G Pro X Superlight",
     price: 49.99,
     discountedPrice: 39.99,
     rating: 4.5,
@@ -25,7 +25,7 @@ const data = [
   },
   {
     id: "2",
-    productName: "Produto 2",
+    productName: "Cloud Stinger 2",
     price: 29.99,
     rating: 4.0,
     imageSource: require("../../../assets/imageMouse.png"),
