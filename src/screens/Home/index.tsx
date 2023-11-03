@@ -9,7 +9,8 @@ import {
 } from "react-native";
 import { colors } from "../../colors";
 import ButtonHome from "../../components/Button/ButtonsHome";
-import Banner from "../../../assets/banner-55%off.png";
+import Banner from "../../assets/banner-55%off.png";
+import Banner2 from "../../assets/banner-mouses.png";
 import Header from "../../components/Header";
 import TextHome from "../../components/Text";
 import Card from "../../components/Cards/ProductsCard"; // Certifique-se de importar o componente Card a partir do caminho correto
@@ -21,14 +22,30 @@ const data = [
     price: 49.99,
     discountedPrice: 39.99,
     rating: 4.5,
-    imageSource: require("../../../assets/imageFone.png"),
+    imageSource: require("../../assets/imageFone.png"),
   },
   {
     id: "2",
     productName: "Cloud Stinger 2",
     price: 29.99,
     rating: 4.0,
-    imageSource: require("../../../assets/imageMouse.png"),
+    imageSource: require("../../assets/imageMouse.png"),
+  },
+  {
+    id: "3",
+    productName: "G Pro X Superlight",
+    price: 49.99,
+    discountedPrice: 39.99,
+    rating: 4.5,
+    imageSource: require("../../assets/imageFone.png"),
+  },
+  {
+    id: "4",
+    productName: "G Pro X Superlight",
+    price: 49.99,
+    discountedPrice: 39.99,
+    rating: 4.5,
+    imageSource: require("../../assets/imageFone.png"),
   },
 ];
 
@@ -37,7 +54,7 @@ export default function Home() {
     <>
       <ScrollView style={styles.container}>
         <Header />
-        <View style={styles.ImageContainer}>
+        <View style={styles.ImageContainer1}>
           <TouchableOpacity>
             <Image source={Banner} style={{ width: 350, height: 150 }} />
           </TouchableOpacity>
@@ -69,6 +86,28 @@ export default function Home() {
             />
           )}
         />
+        <View style={styles.ImageContainer2}>
+          <TouchableOpacity>
+            <Image source={Banner2} style={{ width: 350, height: 150 }} />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.keyboard}>
+          <TextHome text="TECLADOS" style={styles.textHome} />
+        </View>
+        <FlatList
+          data={data}
+          horizontal={true}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Card
+              productName={item.productName}
+              price={item.price}
+              discountedPrice={item.discountedPrice}
+              rating={item.rating}
+              imageSource={item.imageSource}
+            />
+          )}
+        />
       </ScrollView>
     </>
   );
@@ -79,10 +118,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primaryColor,
   },
-  ImageContainer: {
+  ImageContainer1: {
     margin: 19,
-    marginBottom: 65,
+    marginBottom: 25,
+    left: 10,
   },
+  ImageContainer2: {
+    margin: 19,
+    left: 10,
+  },
+
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "center",
@@ -98,4 +143,5 @@ const styles = StyleSheet.create({
     color: colors.whiteColor,
     marginLeft: 20,
   },
+  keyboard: {},
 });
