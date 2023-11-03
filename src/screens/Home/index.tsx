@@ -142,17 +142,19 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primaryColor,
   },
   ImageContainer1: {
-    margin: 19,
     marginBottom: 25,
-    left: 10,
+    alignItems: "center",
   },
   ImageContainer2: {
+    top: 10,
+
     margin: 19,
-    left: 10,
+    alignItems: "center",
   },
   ImageContainer3: {
+    top: 10,
     margin: 19,
-    left: 10,
+    alignItems: "center",
   },
 
   buttonContainer: {
