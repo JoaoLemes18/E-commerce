@@ -114,6 +114,23 @@ export default function Home() {
             <Image source={Banner3} style={{ width: 350, height: 150 }} />
           </TouchableOpacity>
         </View>
+        <View style={styles.keyboard}>
+          <TextHome text="MOUSES" style={styles.textHome} />
+        </View>
+        <FlatList
+          data={data}
+          horizontal={true}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Card
+              productName={item.productName}
+              price={item.price}
+              discountedPrice={item.discountedPrice}
+              rating={item.rating}
+              imageSource={item.imageSource}
+            />
+          )}
+        />
       </ScrollView>
     </>
   );
