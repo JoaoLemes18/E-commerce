@@ -15,6 +15,7 @@ import Banner3 from "../../assets/Banner-Fones.png";
 import Header from "../../components/Header";
 import TextHome from "../../components/Text";
 import Card from "../../components/Cards/ProductsCard"; // Certifique-se de importar o componente Card a partir do caminho correto
+import api from "../../services/api";
 
 const data = [
   {
