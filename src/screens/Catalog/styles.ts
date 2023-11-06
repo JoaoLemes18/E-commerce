@@ -7,10 +7,16 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.primaryColor,
   },
   componentText: {
-    marginBottom: 25,
-    marginRight: 230,
+    marginRight: 215,
   },
-
+  cardContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 16,
+  },
+  cardGroup: {
+    flex: 1,
+  },
   nameContainer: {
     width: "100%",
     borderBottomLeftRadius: 10,

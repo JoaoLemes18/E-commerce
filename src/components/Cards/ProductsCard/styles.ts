@@ -12,12 +12,12 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.backgroundColor,
     borderRadius: 10,
     padding: 10,
-
     alignItems: "center",
   },
   image: {
     top: 20,
     alignItems: "center",
+
     height: 80,
   },
   discountContainer: {

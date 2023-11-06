@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { styles } from "./styles";
 
@@ -15,14 +15,11 @@ const ButtonHome: React.FC<ButtonHomeProps> = ({
   onPress,
 }) => {
   return (
-    <TouchableOpacity
-      style={[styles.container, styles.buttonMargin]}
-      onPress={onPress}
-    >
-      <Text style={styles.title}>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.buttonContent}>
         {iconName && <Icon name={iconName} style={styles.icon} />}
-        {title}
-      </Text>
+        <Text style={styles.title}>{title}</Text>
+      </View>
     </TouchableOpacity>
   );
 };

@@ -1,60 +1,76 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { StatusBar } from "expo-status-bar";
-import { View, ScrollView, FlatList } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import { styles } from "./styles";
 import TitleWithBox from "../../components/Title";
 import Header from "../../components/Header";
 import CardComponent from "../../components/Cards/Catalog";
 
-const data = [
-  {
-    id: "1",
-    name: "Fones",
-    imageSource: require("../../assets/imageFone.png"),
-  },
-  {
-    id: "2",
-    name: "Fones",
-    imageSource: require("../../assets/imageFone.png"),
-  },
-  {
-    id: "3",
-    name: "Fones",
-    imageSource: require("../../assets/imageFone.png"),
-  },
-  {
-    id: "4",
-    name: "Fones",
-    imageSource: require("../../assets/imageFone.png"),
-  },
-  {
-    id: "5",
-    name: "Fones",
-    imageSource: require("../../assets/imageFone.png"),
-  },
-  {
-    id: "6",
-    name: "Fones",
-    imageSource: require("../../assets/imageFone.png"),
-  },
-];
+interface Product {
+  id: number;
+  category: string;
+  imageUrl: string;
+}
 
 const Catalog: React.FC = () => {
+  const [categories, setCategories] = useState<string[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    axios
+      .get("https://json-rose-five.vercel.app/products")
+      .then((response) => {
+        const uniqueCategories = [
+          ...new Set(response.data.map((item: Product) => item.category)),
+        ];
+        const filteredCategories = uniqueCategories.slice(0, 5);
+        setCategories(filteredCategories);
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.error("Erro ao obter dados da API", error);
+      });
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
       <Header />
       <View style={styles.componentText}>
         <TitleWithBox title="CATÁLOGO" iconName="th-large" />
       </View>
-      <FlatList
-        data={data}
-        numColumns={2}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <CardComponent />}
-      />
+      <View style={styles.cardContainer}>
+        <View style={styles.cardGroup}>
+          {categories.slice(0, 3).map((category) => (
+            <CardComponent
+              key={category}
+              category={category}
+              imageSource={{
+                uri: getFirstImageForCategory(products, category),
+              }}
+            />
+          ))}
+        </View>
+        <View style={styles.cardGroup}>
+          {categories.slice(3, 6).map((category) => (
+            <CardComponent
+              key={category}
+              category={category}
+              imageSource={{
+                uri: getFirstImageForCategory(products, category),
+              }}
+            />
+          ))}
+        </View>
+      </View>
       <StatusBar style="light" />
     </ScrollView>
   );
 };
+
+function getFirstImageForCategory(products: Product[], category: string) {
+  const product = products.find((item) => item.category === category);
+  return product ? product.imageUrl : "";
+}
 
 export default Catalog;

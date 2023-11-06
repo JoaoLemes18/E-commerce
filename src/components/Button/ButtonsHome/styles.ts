@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../../colors";
 
 export const styles = StyleSheet.create({
-  container: {
+  buttonContent: {
     flexDirection: "row",
     borderColor: colors.secondaryColor,
     borderWidth: 2,
@@ -10,14 +10,13 @@ export const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: "transparent",
     width: 168,
+    marginBottom: 18,
   },
   title: {
     fontWeight: "700",
     fontSize: 12,
+    top: 2,
     color: colors.whiteColor,
-  },
-  buttonMargin: {
-    marginBottom: 10,
   },
   icon: {
     fontSize: 18,

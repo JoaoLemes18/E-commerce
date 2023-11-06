@@ -12,7 +12,6 @@ export const styles = StyleSheet.create({
   },
   ImageContainer2: {
     top: 10,
-
     margin: 19,
     alignItems: "center",
   },
