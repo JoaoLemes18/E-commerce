@@ -3,20 +3,14 @@ import { colors } from "../../../colors";
 
 export const styles = StyleSheet.create({
   container: {
-    width: 160,
-    height: 310,
-    marginLeft: 20,
-    top: 10,
-    marginBottom: -90,
+    flex: 1,
+    backgroundColor: colors.primaryColor,
   },
-  card: {
-    width: "100%",
-    height: 150,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
+  componentText: {
+    marginBottom: 25,
+    marginRight: 230,
   },
+
   nameContainer: {
     width: "100%",
     borderBottomLeftRadius: 10,
@@ -24,17 +18,5 @@ export const styles = StyleSheet.create({
     height: 43,
     alignItems: "center",
     backgroundColor: colors.backgroundColor,
-  },
-  textCard: {
-    top: 10,
-    color: colors.whiteColor,
-    fontSize: 14,
-    fontWeight: "700",
-    lineHeight: 20,
-  },
-  cardImage: {
-    width: 100,
-    height: 100,
-    alignItems: "center",
   },
 });

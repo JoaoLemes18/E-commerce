@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 16,
+    marginTop: 10,
   },
   cardGroup: {
     flex: 1,

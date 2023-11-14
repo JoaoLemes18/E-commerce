@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
+  StyleSheet,
   View,
   Image,
   TouchableOpacity,
   ScrollView,
   FlatList,
 } from "react-native";
-import axios from "axios";
-
-import { styles } from "./styles";
+import { colors } from "../../colors";
 import ButtonHome from "../../components/Button/ButtonsHome";
 import Banner from "../../assets/banner-55%off.png";
 import Banner2 from "../../assets/banner-mouses.png";
@@ -16,40 +15,43 @@ import Banner3 from "../../assets/Banner-Fones.png";
 import Header from "../../components/Header";
 import TextHome from "../../components/Text";
 import Card from "../../components/Cards/ProductsCard";
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  discount: number;
-  average_rating: number;
-  imageUrls: string;
-  category: string;
-}
+import { styles } from "./styles";
+
+const data = [
+  {
+    id: "1",
+    productName: "G Pro X Superlight",
+    price: 49.99,
+    discountedPrice: 39.99,
+    rating: 4.5,
+    imageSource: require("../../assets/imageFone.png"),
+  },
+  {
+    id: "2",
+    productName: "Cloud Stinger 2",
+    price: 29.99,
+    rating: 4.0,
+    imageSource: require("../../assets/imageMouse.png"),
+  },
+  {
+    id: "3",
+    productName: "G Pro X Superlight",
+    price: 49.99,
+    discountedPrice: 39.99,
+    rating: 4.5,
+    imageSource: require("../../assets/imageFone.png"),
+  },
+  {
+    id: "4",
+    productName: "G Pro X Superlight",
+    price: 49.99,
+    discountedPrice: 39.99,
+    rating: 4.5,
+    imageSource: require("../../assets/imageFone.png"),
+  },
+];
 
 export default function Home() {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    axios
-      .get("https://json-rose-five.vercel.app/products")
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .catch((error) => {
-        console.error("Erro ao obter dados da API", error);
-      });
-  }, []);
-
-  // Organizar os produtos por categoria
-  const categorizedProducts: Record<string, Product[]> = {};
-
-  products.forEach((product) => {
-    const { category } = product;
-    if (!categorizedProducts[category]) {
-      categorizedProducts[category] = [];
-    }
-    categorizedProducts[category].push(product);
-  });
   return (
     <>
       <ScrollView style={styles.container}>
@@ -73,16 +75,16 @@ export default function Home() {
         </View>
         <TextHome text="OFERTAS" style={styles.textHome} />
         <FlatList
-          data={products}
+          data={data}
           horizontal={true}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <Card
-              productName={item.name}
+              productName={item.productName}
               price={item.price}
-              discountedPrice={item.price - item.discount}
-              rating={item.average_rating}
-              imageSource={{ uri: item.imageUrls[0] }}
+              discountedPrice={item.discountedPrice}
+              rating={item.rating}
+              imageSource={item.imageSource}
             />
           )}
         />
@@ -93,22 +95,21 @@ export default function Home() {
         </View>
         <View style={styles.keyboard}>
           <TextHome text="TECLADOS" style={styles.textHome} />
-          <FlatList
-            data={categorizedProducts["Keyboard"]}
-            horizontal={true}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <Card
-                productName={item.name}
-                price={item.price}
-                discountedPrice={item.price - item.discount}
-                rating={item.average_rating}
-                imageSource={{ uri: item.imageUrls[0] }}
-              />
-            )}
-          />
         </View>
-
+        <FlatList
+          data={data}
+          horizontal={true}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Card
+              productName={item.productName}
+              price={item.price}
+              discountedPrice={item.discountedPrice}
+              rating={item.rating}
+              imageSource={item.imageSource}
+            />
+          )}
+        />
         <View style={styles.ImageContainer3}>
           <TouchableOpacity>
             <Image source={Banner3} style={{ width: 350, height: 150 }} />
@@ -116,21 +117,21 @@ export default function Home() {
         </View>
         <View style={styles.keyboard}>
           <TextHome text="MOUSES" style={styles.textHome} />
-          <FlatList
-            data={categorizedProducts["Mouse"]}
-            horizontal={true}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <Card
-                productName={item.name}
-                price={item.price}
-                discountedPrice={item.price - item.discount}
-                rating={item.average_rating}
-                imageSource={{ uri: item.imageUrls[0] }}
-              />
-            )}
-          />
         </View>
+        <FlatList
+          data={data}
+          horizontal={true}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Card
+              productName={item.productName}
+              price={item.price}
+              discountedPrice={item.discountedPrice}
+              rating={item.rating}
+              imageSource={item.imageSource}
+            />
+          )}
+        />
       </ScrollView>
     </>
   );
